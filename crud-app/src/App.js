@@ -26,7 +26,7 @@ function App() {
       }
 
     function handleAdd(){
-      console.log(testing)
+      console.log("testing")
 
     }
   return (
