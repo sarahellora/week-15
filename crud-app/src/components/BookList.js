@@ -1,10 +1,8 @@
 import React, {useEffect,useState}from 'react'
-import axios from 'axios';
 
 
 
-
-const ReviewList = (props) => {   
+const BookList = (props) => {   
     const {title,author,handleDelete,id} = props
 
 
@@ -17,4 +15,4 @@ return (
     </div>
     )
 }
-export default ReviewList
+export default BookList

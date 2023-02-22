@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Books from './components/Books'
+import BookList from './components/BookList'
+import BookForm from './components/BookForm'
 import React, {useEffect,useState}from 'react'
-
 import axios from 'axios';
 
 
@@ -25,22 +25,26 @@ function App() {
         })) )
       }
 
-    function handleAdd(){
-      console.log("testing")
+    function handleAdd(e,author,title){
+      e.preventDefault();
+      axios.post('https://63f4610d2213ed989c416cd7.mockapi.io/users',{title:title,author:author}).then((response) => {
+        setInitialData([response.data, ...initialData]);
+     });
 
     }
   return (
     <div>
       {initialData?.map((book)=>
-            <Books 
+            <BookList
             title={book.title}
             author={book.author}
             handleDelete={handleDelete}
             id={book.id}
             />
-      )}
 
-      <button onClick={handleAdd}>Add book</button>
+      )}
+      <BookForm handleSubmit={handleAdd}/>
+
     </div>
   );
 }
