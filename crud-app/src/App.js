@@ -31,20 +31,26 @@ function App() {
         setInitialData([response.data, ...initialData]);
      });
 
+    } function handleUpdate(e,author,title,id){
+      e.preventDefault();
+      axios.put(`https://63f4610d2213ed989c416cd7.mockapi.io/users/${id}`,{title:title,author:author}).then((response) => {
+        setInitialData([response.data, ...initialData]);
+     });
     }
+
   return (
     <div>
-      {initialData?.map((book)=>
+      {initialData?.map((book, index)=>
             <BookList
+            index={index}
             title={book.title}
             author={book.author}
             handleDelete={handleDelete}
+            handleUpdate={handleUpdate}
             id={book.id}
             />
-
       )}
       <BookForm handleSubmit={handleAdd}/>
-
     </div>
   );
 }
