@@ -25,9 +25,8 @@ function App() {
         })) )
       }
 
-    function handleAdd(e,author,title){
-      e.preventDefault();
-      axios.post('https://63f4610d2213ed989c416cd7.mockapi.io/users',{title:title,author:author}).then((response) => {
+   async function handleAdd(e,author,title){
+      await axios.post('https://63f4610d2213ed989c416cd7.mockapi.io/users',{title:title,author:author}).then((response) => {
         setInitialData([response.data, ...initialData]);
      });
 
