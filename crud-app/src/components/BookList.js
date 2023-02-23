@@ -16,6 +16,7 @@ const BookList = (props) => {
         const title = e.target.value
         setFormTitle(title)
       }
+      
 
 
 return (
@@ -28,10 +29,10 @@ return (
                 <button onClick={()=>setShowForm(true)}>Update</button>
         {showForm &&
             <>
-                <form>
+                <form onSubmit={(e)=> handleUpdate(e,formAuthor,formTitle,id)}>
                     <textarea value={formTitle}  placeholder='Title' onChange={(e)=> handleTitle(e)}></textarea>
                     <textarea value={formAuthor}  placeholder='Author' onChange={(e)=> handleAuthor(e)}></textarea>
-                    <input type="submit" value="Submit" onClick={(e)=> handleUpdate(e,formAuthor,formTitle,id)} />
+                    <button type="submit">Submit</button>
                 </form>
             </>
         }
