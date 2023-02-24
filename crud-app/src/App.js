@@ -33,7 +33,10 @@ function App() {
     } 
     const handleUpdate = async(e,author,title,id) => {
       await axios.put(`https://63f4610d2213ed989c416cd7.mockapi.io/users/${id}`,{title:title,author:author}).then((response) => {
-        setInitialData([response.data, ...initialData]);
+        const filterArray = initialData.filter((post) => {
+          return post.id !== id;
+        });
+        setInitialData([response.data, ...filterArray]);
      });
     }
 
