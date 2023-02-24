@@ -25,14 +25,16 @@ function App() {
         })) )
       }
 
-   async function handleAdd(e,author,title){
-      await axios.post('https://63f4610d2213ed989c416cd7.mockapi.io/users',{title:title,author:author}).then((response) => {
+    function handleAdd(e,author,title){
+      e.preventDefault()
+       axios.post('https://63f4610d2213ed989c416cd7.mockapi.io/users',{title:title,author:author}).then((response) => {
         setInitialData([response.data, ...initialData]);
      });
 
     } 
-    const handleUpdate = async(e,author,title,id) => {
-      await axios.put(`https://63f4610d2213ed989c416cd7.mockapi.io/users/${id}`,{title:title,author:author}).then((response) => {
+    const handleUpdate = (e,author,title,id) => {
+      e.preventDefault()
+       axios.put(`https://63f4610d2213ed989c416cd7.mockapi.io/users/${id}`,{title:title,author:author}).then((response) => {
         const filterArray = initialData.filter((post) => {
           return post.id !== id;
         });
